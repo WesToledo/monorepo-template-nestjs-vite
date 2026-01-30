@@ -1,16 +1,65 @@
-# React + Vite
+# Casa do Malharista - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modular React application following the **Antigravity** architecture guidelines.
 
-Currently, two official plugins are available:
+## 🏗 Project Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follows a modular, feature-oriented structure designed for scalability:
 
-## React Compiler
+- **`src/assets/`**: Static resources like images, SVGs, and fonts.
+- **`src/components/`**: Reusable UI building blocks.
+  - **`ui/`**: Atomic, low-level primitives (Buttons, Inputs, etc.) built using **Chakra UI v3**.
+- **`src/contexts/`**: Shared state management using React Context (e.g., Theme/ColorMode).
+- **`src/hooks/`**: Custom, reusable business logic and side effects.
+- **`src/layouts/`**: Structural components wrapping pages for consistent UI shells.
+- **`src/lib/`**: Third-party library configurations (e.g., Chakra system, API clients).
+- **`src/pages/`**: View-level components mapped to specific routes.
+- **`src/routes/`**: Routing infrastructure using React Router.
+- **`src/services/`**: Data fetching and external API communication layer.
+- **`src/styles/`**: Global style definitions and theme tokens.
+- **`src/helpers/`**: Pure, side-effect-free utility functions.
+- **`src/types/`**: Shared TypeScript interfaces.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+- **React 19** & **Vite 7**
+- **TypeScript** (Strict mode)
+- **Chakra UI v3** (with `next-themes`)
+- **React Router 7**
+- **Zod** (Schema validation)
+- **Biome** (Linting & Formatting)
+- **Vite PWA** (Offline support)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Lint & Format
+
+```bash
+npm run lint
+npm run format
+```
+
+## 🏷 Naming Conventions
+
+- **Directories:** `kebab-case`
+- **Components:** `PascalCase.tsx`
+- **Hooks:** `camelCase.ts` starting with `use`
+- **Utilities:** `kebab-case.ts`
