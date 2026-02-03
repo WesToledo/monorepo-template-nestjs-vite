@@ -1,5 +1,5 @@
 {
-  "name": "casa-do-malharista",
+  "name": "monorepo_template_nestjs_vite",
   "private": true,
   "workspaces": [
     "packages/*",

@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:17-alpine
+    container_name: monorepo_template_nestjs_vite-db-dev
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-monorepo_template_nestjs_vite}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_dev:

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Box, Container, Flex } from '@chakra-ui/react';
+import { ReactNode } from "react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         <Container maxW="container.xl">
           <Flex justify="space-between" align="center">
             <Box fontSize="xl" fontWeight="bold" color="text.primary">
-              Casa do Malharista
+              Monorepo Template NestJS Vite
             </Box>
           </Flex>
         </Container>
@@ -27,7 +27,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Box as="footer" bg="bg.surface" borderTopWidth="1px" py={4}>
         <Container maxW="container.xl">
           <Box textAlign="center" color="text.secondary" fontSize="sm">
-            © {new Date().getFullYear()} Casa do Malharista
+            © {new Date().getFullYear()} Monorepo Template NestJS Vite
           </Box>
         </Container>
       </Box>

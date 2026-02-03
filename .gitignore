@@ -2,5 +2,10 @@ node_modules/
 .DS_Store
 *.log
 .env
+.env.*
+!.env.example
 dist/
 build/
+.cache/
+docker-compose.override.yml
+*.db

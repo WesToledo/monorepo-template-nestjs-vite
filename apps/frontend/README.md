@@ -1,4 +1,4 @@
-# Casa do Malharista - Frontend
+# Monorepo Template NestJS Vite - Frontend
 
 Modular React application following the **Antigravity** architecture guidelines.
 

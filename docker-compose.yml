@@ -1,0 +1,41 @@
+services:
+  database:
+    image: postgres:17-alpine
+    container_name: monorepo_template_nestjs_vite-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-monorepo_template_nestjs_vite}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: monorepo_template_nestjs_vite-backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@database:5432/${DB_NAME:-monorepo_template_nestjs_vite}?schema=public
+      PORT: 3000
+    depends_on:
+      - database
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    container_name: monorepo_template_nestjs_vite-frontend
+    restart: always
+    ports:
+      - "4173:4173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
