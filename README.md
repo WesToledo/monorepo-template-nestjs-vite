@@ -34,13 +34,27 @@ cp .env.example .env
 
 ### 1. Start the Database
 
-The project uses PostgreSQL. The easiest way to run it is via Docker:
+The project uses PostgreSQL with Prisma ORM. Start the database using Docker:
 
 ```bash
-docker-compose -f docker-compose.dev.yml up -d
+npm run docker:up
 ```
 
-### 2. Run the Applications
+### 2. Database Migrations
+
+Before running the applications for the first time, you must apply the database migrations:
+
+```bash
+npm run db:migrate
+```
+
+This command will:
+
+1. Create the database if it doesn't exist.
+2. Apply migrations to the database.
+3. Generate the Prisma Client.
+
+### 3. Run the Applications
 
 You can run both the frontend and backend concurrently in development mode:
 
@@ -66,7 +80,7 @@ To run the entire project (database, backend, and frontend) in production mode u
 docker-compose up -d --build
 ```
 
-- **Frontend:** Accessible at `http://localhost:4173`
+- **Frontend:** Accessible at `http://localhost:5173`
 - **Backend:** Accessible at `http://localhost:3000`
 
 ## Other Scripts
@@ -74,3 +88,7 @@ docker-compose up -d --build
 - **Build:** `npm run build` - Builds both applications.
 - **Lint:** `npm run lint` - Lints both applications.
 - **Test:** `npm run test` - Runs backend tests.
+- **Database Migrate:** `npm run db:migrate` - Creates and applies migrations.
+- **Prisma Client Generate:** `npm run db:generate` - Regenerates Prisma Client.
+- **Prisma Studio:** `npm run db:studio` - Opens a UI to explore your data.
+- **Docker Up/Down:** `npm run docker:up` / `npm run docker:down` - Manage database container.

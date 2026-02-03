@@ -15,7 +15,12 @@
     "lint:backend": "npm run lint -w backend",
     "lint:frontend": "npm run lint -w frontend",
     "lint": "npm run lint:backend && npm run lint:frontend",
-    "test": "npm run test -w backend"
+    "test": "npm run test -w backend",
+    "db:migrate": "npm run prisma:migrate -w backend",
+    "db:generate": "npm run prisma:generate -w backend",
+    "db:studio": "npm run prisma:studio -w backend",
+    "docker:up": "docker compose -f docker-compose.dev.yml up -d",
+    "docker:down": "docker compose -f docker-compose.dev.yml down"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

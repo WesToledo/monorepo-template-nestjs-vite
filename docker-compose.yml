@@ -33,7 +33,7 @@ services:
     container_name: monorepo_template_nestjs_vite-frontend
     restart: always
     ports:
-      - "4173:4173"
+      - "5173:5173"
     depends_on:
       - backend
 
