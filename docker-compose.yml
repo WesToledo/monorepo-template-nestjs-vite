@@ -14,8 +14,8 @@ services:
 
   backend:
     build:
-      context: ./apps/backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
     container_name: monorepo_template_nestjs_vite-backend
     restart: always
     environment:
@@ -28,8 +28,8 @@ services:
 
   frontend:
     build:
-      context: ./apps/frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
     container_name: monorepo_template_nestjs_vite-frontend
     restart: always
     ports:

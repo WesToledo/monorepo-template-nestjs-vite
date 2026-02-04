@@ -1,10 +1,5 @@
 import { BaseApi } from "./base-api";
-import type { User } from "@/types";
-
-export interface LoginResponse {
-  user: User;
-  accessToken: string;
-}
+import type { LoginResponse, ProfileResponse } from "@shared/core";
 
 class AuthService extends BaseApi {
   constructor() {
@@ -20,8 +15,8 @@ class AuthService extends BaseApi {
     await this.api.post("/logout");
   }
 
-  async me(): Promise<User> {
-    const { data } = await this.api.get<User>("/me");
+  async me(): Promise<ProfileResponse> {
+    const { data } = await this.api.get<ProfileResponse>("/profile");
     return data;
   }
 }

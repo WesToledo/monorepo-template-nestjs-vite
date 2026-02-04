@@ -1,8 +1,6 @@
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
+import type { User as SharedUser } from "@shared/core";
+
+export type User = SharedUser;
 
 export interface ApiResponse<T> {
   data: T;
