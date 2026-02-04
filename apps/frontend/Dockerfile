@@ -1,31 +1,28 @@
-# Base stage for dependencies
 FROM node:22-alpine AS base
-
-# Install dependencies only when needed
-FROM base AS deps
+RUN npm install -g turbo
 WORKDIR /app
-COPY package.json package-lock.json ./
-COPY apps/frontend/package.json ./apps/frontend/package.json
-COPY packages/shared/package.json ./packages/shared/package.json
-RUN npm install
 
-# Rebuild the source code only when needed
+FROM base AS pruner
+COPY . .
+RUN turbo prune --scope=frontend --docker
+
 FROM base AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN npm run build -w frontend
+COPY --from=pruner /app/out/json/ .
+COPY --from=pruner /app/out/package-lock.json ./package-lock.json
+RUN npm install
 
-# Production image, copy all the files and run next
+COPY --from=pruner /app/out/full/ .
+RUN npm run build --filter=frontend
+
 FROM base AS runner
 WORKDIR /app
-
 ENV NODE_ENV production
-
-COPY --from=builder /app/apps/frontend/dist ./dist
+COPY --from=builder /app/apps/frontend/dist ./apps/frontend/dist
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/apps/frontend/package.json ./package.json
+COPY --from=builder /app/apps/frontend/package.json ./apps/frontend/package.json
+COPY --from=builder /app/package.json ./package.json
 
 EXPOSE 5173
 
-CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "preview", "-w", "frontend", "--", "--host", "0.0.0.0"]

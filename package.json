@@ -1,21 +1,19 @@
 {
   "name": "monorepo_template_nestjs_vite",
+  "packageManager": "npm@11.3.0",
   "private": true,
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
-    "dev:backend": "npm run start:dev -w backend",
-    "dev:frontend": "npm run dev -w frontend",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "build:backend": "npm run build -w backend",
-    "build:frontend": "npm run build -w frontend",
-    "build": "npm run build:backend && npm run build:frontend",
-    "lint:backend": "npm run lint -w backend",
-    "lint:frontend": "npm run lint -w frontend",
-    "lint": "npm run lint:backend && npm run lint:frontend",
-    "test": "npm run test -w backend",
+    "dev": "turbo dev",
+    "dev:backend": "turbo dev --filter=backend",
+    "dev:frontend": "turbo dev --filter=frontend",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "turbo format",
     "db:migrate": "npm run prisma:migrate -w backend",
     "db:generate": "npm run prisma:generate -w backend",
     "db:studio": "npm run prisma:studio -w backend",
@@ -23,6 +21,6 @@
     "docker:down": "docker compose -f docker-compose.dev.yml down"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "turbo": "^2.4.2"
   }
 }
