@@ -17,8 +17,24 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { loginSchema, type LoginInput } from "@shared/core";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginInput>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginInput) => {
+    console.log("Login data:", data);
+    // TODO: Implement actual login logic
+  };
+
   return (
     <Box
       minH="100vh"
@@ -96,25 +112,26 @@ const Login = () => {
           </Card.Header>
 
           <Card.Body>
-            <form action="#" method="POST">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Stack gap="6">
                 {/* Email Field */}
-                <Field.Root>
+                <Field.Root invalid={!!errors.email}>
                   <Field.Label fontWeight="medium" fontSize="sm">
                     Email Address
                   </Field.Label>
                   <Input
                     type="email"
                     placeholder="name@company.com"
-                    required
                     size="lg"
                     borderRadius="lg"
                     bg="bg.surface"
+                    {...register("email")}
                   />
+                  <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
                 </Field.Root>
 
                 {/* Password Field */}
-                <Field.Root>
+                <Field.Root invalid={!!errors.password}>
                   <Field.Label fontWeight="medium" fontSize="sm">
                     Password
                   </Field.Label>
@@ -132,12 +149,13 @@ const Login = () => {
                     <Input
                       type="password"
                       placeholder="••••••••"
-                      required
                       size="lg"
                       borderRadius="lg"
                       bg="bg.surface"
+                      {...register("password")}
                     />
                   </InputGroup>
+                  <Field.ErrorText>{errors.password?.message}</Field.ErrorText>
                 </Field.Root>
 
                 {/* Remember Me */}
@@ -164,6 +182,7 @@ const Login = () => {
                   borderRadius="lg"
                   _hover={{ bg: "primary.600" }}
                   transition="all 0.2s"
+                  loading={isSubmitting}
                 >
                   <HStack gap="2">
                     <span

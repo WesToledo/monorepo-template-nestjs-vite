@@ -20,6 +20,10 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@shared/core": ["../../packages/shared/index.ts"],
+      "@shared/core/dto": ["../../packages/shared/dto.ts"]
+    }
   }
 }

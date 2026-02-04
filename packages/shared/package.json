@@ -2,9 +2,31 @@
   "name": "@shared/core",
   "version": "1.0.0",
   "main": "index.ts",
+  "types": "index.ts",
   "private": true,
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "import": "./index.ts",
+      "default": "./index.ts"
+    },
+    "./dto": {
+      "types": "./dto.ts",
+      "import": "./dto.ts",
+      "default": "./dto.ts"
+    }
+  },
   "scripts": {
     "lint": "biome lint .",
-    "format": "biome format . --write"
+    "format": "biome format . --write",
+    "dev": "tsc --watch --noEmit"
+  },
+  "peerDependencies": {
+    "zod": "^3.0.0",
+    "nestjs-zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "zod": "^3.24.1",
+    "nestjs-zod": "^5.1.1"
   }
 }

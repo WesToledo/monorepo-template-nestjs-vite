@@ -24,7 +24,8 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@shared/core": ["../../packages/shared/index.ts"]
     }
   },
   "include": ["src"]

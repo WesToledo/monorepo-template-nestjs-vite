@@ -33,6 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@shared/core": path.resolve(__dirname, "../../packages/shared/index.ts"),
     },
   },
 });
