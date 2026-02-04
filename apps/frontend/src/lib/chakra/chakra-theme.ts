@@ -1,40 +1,46 @@
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 const customConfig = defineConfig({
   theme: {
     tokens: {
       colors: {
-        brand: {
-          50: { value: '#e3f2fd' },
-          100: { value: '#bbdefb' },
-          200: { value: '#90caf9' },
-          300: { value: '#64b5f6' },
-          400: { value: '#42a5f5' },
-          500: { value: '#2196f3' },
-          600: { value: '#1e88e5' },
-          700: { value: '#1976d2' },
-          800: { value: '#1565c0' },
-          900: { value: '#0d47a1' },
+        primary: {
+          50: { value: "#eef3ff" },
+          100: { value: "#dce6ff" },
+          200: { value: "#bdcfff" },
+          300: { value: "#8fabff" },
+          400: { value: "#5a7cff" },
+          500: { value: "#1152d4" },
+          600: { value: "#0e41a9" },
+          700: { value: "#0c3280" },
+          800: { value: "#092359" },
+          900: { value: "#061638" },
         },
       },
       fonts: {
-        heading: { value: 'Inter, system-ui, sans-serif' },
-        body: { value: 'Inter, system-ui, sans-serif' },
+        heading: { value: "Inter, system-ui, sans-serif" },
+        body: { value: "Inter, system-ui, sans-serif" },
       },
     },
     semanticTokens: {
       colors: {
-        'bg.canvas': {
-          value: { base: '{colors.gray.50}', _dark: '{colors.gray.900}' },
+        "bg.canvas": {
+          value: { base: "#f6f6f8", _dark: "#101622" },
         },
-        'bg.surface': {
-          value: { base: '{colors.white}', _dark: '{colors.gray.800}' },
+        "bg.surface": {
+          value: { base: "{colors.white}", _dark: "#1a202c" },
         },
-        'text.primary': {
-          value: { base: '{colors.gray.900}', _dark: '{colors.gray.100}' },
+        "text.primary": {
+          value: { base: "#111318", _dark: "{colors.white}" },
         },
-        'text.secondary': {
-          value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' },
+        "text.secondary": {
+          value: { base: "#616f89", _dark: "{colors.gray.400}" },
+        },
+        brand: {
+          value: {
+            base: "{colors.primary.500}",
+            _dark: "{colors.primary.400}",
+          },
         },
       },
     },

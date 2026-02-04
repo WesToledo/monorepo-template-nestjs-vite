@@ -12,7 +12,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider value={system}>
-        <ColorModeProvider>
+        <ColorModeProvider defaultTheme="light" forcedTheme="light">
           <ThemeProvider>
             <AuthProvider>
               <AppRouter />

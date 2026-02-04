@@ -1,10 +1,13 @@
 import type { RouteObject } from "react-router";
-import { Home } from "@/pages/Home";
+import { Home, Login } from "@/pages";
 
 export const publicRoutes: RouteObject[] = [
-	{
-		path: "/",
-		element: <Home />,
-	},
-	
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
 ];
